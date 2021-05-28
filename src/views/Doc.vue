@@ -19,7 +19,9 @@
           </li>
         </ol>
       </aside>
-      <main>主内容</main>
+      <main>
+        <router-view/>
+      </main>
     </div>
   </div>
 </template>
@@ -31,7 +33,6 @@ export default {
   components: {Topnav},
   setup() {
     const menuVisible = inject<Ref<boolean>>('menuVisible');
-    console.log('Doc aside 获取的menuVisible为:' + menuVisible.value);
     return {menuVisible};    // 供菜单的显示与隐藏使用
   }
 };
