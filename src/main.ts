@@ -1,19 +1,19 @@
 import {createApp} from 'vue';
 import App from './App.vue';
-import './index.css';
+import './index.scss';
 import {createWebHashHistory, createRouter} from 'vue-router';
-import Frank from './components/Frank.vue';
-import Frank2 from './components/Frank2.vue';
+import Home from './views/Home.vue';
+import Doc from './views/Doc.vue';
 
 const history = createWebHashHistory();   // hash型路由
 const router = createRouter({   // 创建 router
   history: history,
   routes: [
     {
-      path: '/', component: Frank
+      path: '/', component: Home
     },
     {
-      path: '/xxx', component: Frank2
+      path: '/doc', component: Doc
     }
   ]
 });

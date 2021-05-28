@@ -1,8 +1,4 @@
 <template>
-  <div>导航栏 |
-    <router-link to="/">Frank</router-link>&nbsp;
-    <router-link to="/xxx">Frank2</router-link>
-  </div>
   <router-view/>
 </template>
 
