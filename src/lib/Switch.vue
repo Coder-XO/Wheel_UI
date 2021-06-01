@@ -1,20 +1,23 @@
 <template>
-  <button @click="toggle" :class="{checked:checked}">
+  <button @click="toggle" :class="{checked:value}">
     <span></span>
   </button>
+  <div>{{ value }}</div>
 </template>
 
 <script>
 import {ref} from "vue";
 
 export default {
-  name: "Switch",
-  setup() {
-    const checked = ref(false)   // 标记按钮开关状态
+  props: {    // 控制按钮默认状态的属性
+    value: Boolean
+  },
+  setup(props, context) {
     const toggle = () => {
-      checked.value = !checked.value    // 注意ref引用的用法
+      context.emit('input',!props.value)  // 通知父组件改变属性
+      // vue2 使用 this.$emit 触发事件
     }
-    return {checked, toggle}
+    return {toggle}
   }
 }
 </script>
@@ -29,6 +32,7 @@ button {
   background: gray;
   border-radius: $h/2;
   position: relative;
+  cursor: pointer;
 }
 
 span {
@@ -39,7 +43,7 @@ span {
   width: $h2;
   background: white;
   border-radius: $h2 / 2;
-  transition: left .5s linear;
+  transition: left 250ms;
 }
 
 button.checked {
@@ -48,5 +52,9 @@ button.checked {
 
 button.checked > span {
   left: calc(100% - #{$h2} - 2px); /* 圆圈到右边的位置 */
+}
+
+button:focus {
+  outline: none;
 }
 </style>
