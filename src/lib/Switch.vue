@@ -1,12 +1,21 @@
 <template>
-  <button>
+  <button @click="toggle" :class="{checked:checked}">
     <span></span>
   </button>
 </template>
 
 <script>
+import {ref} from "vue";
+
 export default {
-  name: "Switch"
+  name: "Switch",
+  setup() {
+    const checked = ref(false)   // 标记按钮开关状态
+    const toggle = () => {
+      checked.value = !checked.value    // 注意ref引用的用法
+    }
+    return {checked, toggle}
+  }
 }
 </script>
 
@@ -17,7 +26,7 @@ button {
   height: $h;
   width: $h*2;
   border: none;
-  background: blue;
+  background: gray;
   border-radius: $h/2;
   position: relative;
 }
@@ -33,7 +42,11 @@ span {
   transition: left .5s linear;
 }
 
-button:hover > span {
+button.checked {
+  background-color: blue;
+}
+
+button.checked > span {
   left: calc(100% - #{$h2} - 2px); /* 圆圈到右边的位置 */
 }
 </style>
