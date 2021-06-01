@@ -1,6 +1,7 @@
+import './lib/gulu.scss';  /* 要先引入scss */
+import './index.scss';
 import {createApp} from 'vue';
 import App from './App.vue';
-import './index.scss';
 import {router} from './router';
 
 const app = createApp(App);
