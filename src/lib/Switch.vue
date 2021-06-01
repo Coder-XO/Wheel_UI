@@ -2,7 +2,6 @@
   <button @click="toggle" :class="{checked:value}">
     <span></span>
   </button>
-  <div>{{ value }}</div>
 </template>
 
 <script>
@@ -14,7 +13,7 @@ export default {
   },
   setup(props, context) {
     const toggle = () => {
-      context.emit('input',!props.value)  // 通知父组件改变属性
+      context.emit('update:value',!props.value)  // 通知父组件改变属性
       // vue2 使用 this.$emit 触发事件
     }
     return {toggle}
