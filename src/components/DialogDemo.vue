@@ -24,11 +24,9 @@ export default {
       x.value = !x.value;
     };
     const f1 = () => {
-      console.log(1);
       return false;    // 点击ok 的阻止关闭
     };
     const f2 = () => {
-      console.log(2);
     };
     return {
       x, toggle, f1, f2
