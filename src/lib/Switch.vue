@@ -8,7 +8,7 @@ import {ref} from 'vue';
 
 export default {
   props: {
-    value: Boolean,
+    value: Boolean,   // 显示开关
   },
   setup(props, context) {
     const toggle = () => {
